@@ -43,6 +43,6 @@
     <!--<import resource="classpath:spring/spring-kafka.xml" />-->
     <import resource="classpath:spring/kafka-consumer.xml" />
     <!--<import resource="classpath:spring/kafka-producer.xml" />-->
-    <import resource="classpath:spring/spring-mybatis.xml" />
+    <!--<import resource="classpath:spring/spring-mybatis.xml" />-->
 
 </beans>
