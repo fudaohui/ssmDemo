@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/aop
+                        http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+				        http://www.springframework.org/schema/beans
+				        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+				        http://www.springframework.org/schema/context
+				        http://www.springframework.org/schema/context/spring-context-4.0.xsd
+				        http://www.springframework.org/schema/jee
+				        http://www.springframework.org/schema/jee/spring-jee-4.0.xsd
+				        http://www.springframework.org/schema/tx
+				        http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+				        http://www.springframework.org/schema/task
+				        http://www.springframework.org/schema/task/spring-task-4.0.xsd"
+
+        default-lazy-init="false">
+    <!-- 加载配置文件 -->
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:jdbc.properties</value>
+                <value>classpath:kafka.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!--&lt;!&ndash; IdWorder 消息ID生成器 必须保证单例模式 分部署部署则通过下面两个参数不同生成唯一ID &ndash;&gt;-->
+    <!--<bean id="idWorker" class="com.moli.iov.gateway.util.IdWorker"-->
+          <!--scope="singleton" lazy-init="false">-->
+        <!--<constructor-arg index="0">-->
+            <!--<value>1</value>-->
+        <!--</constructor-arg>-->
+        <!--<constructor-arg index="1">-->
+            <!--<value>1</value>-->
+        <!--</constructor-arg>-->
+    <!--</bean>-->
+
+    <context:component-scan base-package="com.fdh.demo" />
+    <!--<import resource="classpath:spring/spring-kafka.xml" />-->
+    <import resource="classpath:spring/kafka-consumer.xml" />
+    <!--<import resource="classpath:spring/kafka-producer.xml" />-->
+    <import resource="classpath:spring/spring-mybatis.xml" />
+
+</beans>
